@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Website portofolio Richmawan Hariz Pratama - IT Support, Network, Sistem Informasi, dan pengembangan aplikasi." />
+  <title>Richmawan Hariz Pratama | Portfolio</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* =========================================================
+       WEBSITE PORTOFOLIO - RICHMAWAN HARIZ PRATAMA
+       Tema: Dark Mode Biru
+       File ini sengaja dibuat single-file agar mudah di-upload
+       ke GitHub Pages dan mudah dimodifikasi.
+       ========================================================= */
+
+    /* =========================
+       1. PENGATURAN WARNA & GLOBAL
+       Ubah warna utama website di bagian ini.
+       ========================= */
+    :root {
+      --bg-main: #07111f;
+      --bg-soft: #0b1b33;
+      --bg-card: rgba(14, 31, 56, 0.82);
+      --bg-card-hover: rgba(20, 48, 86, 0.95);
+      --primary: #3b82f6;
+      --primary-light: #60a5fa;
+      --primary-dark: #1d4ed8;
+      --accent: #22d3ee;
+      --text-main: #e5f0ff;
+      --text-muted: #a6b7d4;
+      --border: rgba(148, 163, 184, 0.22);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --container: 1120px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.22), transparent 34%),
+        radial-gradient(circle at 85% 20%, rgba(34, 211, 238, 0.16), transparent 30%),
+        var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    section {
+      padding: 96px 20px;
+    }
+
+    .container {
+      width: min(100%, var(--container));
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 52px;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: 0.25s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      box-shadow: 0 12px 30px rgba(59, 130, 246, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 38px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-outline {
+      border-color: var(--border);
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(96, 165, 250, 0.7);
+      background: rgba(59, 130, 246, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    /* =========================
+       2. NAVBAR
+       ========================= */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      transition: 0.25s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(7, 17, 31, 0.86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      width: min(100%, var(--container));
+      margin: 0 auto;
+      min-height: 76px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      box-shadow: 0 12px 25px rgba(59, 130, 246, 0.28);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary-light);
+    }
+
+    .hamburger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    /* =========================
+       3. HERO / BERANDA
+       Untuk mengganti foto profil:
+       - Simpan foto dengan nama: profile.jpg
+       - Letakkan di folder yang sama dengan index.html
+       - Atau ubah src="profile.jpg" sesuai nama file foto kamu.
+       ========================= */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 56px;
+    }
+
+    .hero-badge {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--primary-light);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: clamp(1rem, 2.2vw, 1.17rem);
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 620px;
+    }
+
+    .stat-card {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--primary-light);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 0.87rem;
+    }
+
+    .profile-wrap {
+      position: relative;
+      max-width: 430px;
+      margin-left: auto;
+    }
+
+    .profile-glow {
+      position: absolute;
+      inset: -20px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.45), rgba(34, 211, 238, 0.28));
+      filter: blur(32px);
+      opacity: 0.8;
+      border-radius: 40px;
+    }
+
+    .profile-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 36px;
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      background: linear-gradient(180deg, rgba(14, 31, 56, 0.9), rgba(7, 17, 31, 0.95));
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+
+    .profile-image-box {
+      aspect-ratio: 1 / 1.15;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(34, 211, 238, 0.12)),
+        url("profile.jpg") center/cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      min-height: 400px;
+    }
+
+    .profile-placeholder {
+      width: 100%;
+      padding: 22px;
+      background: linear-gradient(to top, rgba(7, 17, 31, 0.92), transparent);
+    }
+
+    .profile-placeholder h3 {
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+    }
+
+    .profile-placeholder p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* =========================
+       4. TENTANG
+       Layout dibuat ringkas:
+       - Siapa Saya berada di bagian atas
+       - Informasi utama di kiri bawah
+       - Skill & Fokus di kanan bawah
+       ========================= */
+    .about-layout {
+      display: grid;
+      gap: 24px;
+    }
+
+    .about-intro {
+      padding: 30px;
+    }
+
+    .about-intro h3,
+    .about-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .about-intro p,
+    .about-card p {
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .about-intro p:last-child,
+    .about-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-bottom-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .about-card {
+      padding: 26px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--border);
+    }
+
+    .info-item i {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 36px;
+      color: var(--accent);
+      background: rgba(34, 211, 238, 0.1);
+      border-radius: 12px;
+    }
+
+    .info-item strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .info-item span {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .skill-box {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+      transition: 0.25s ease;
+    }
+
+    .skill-box:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+    }
+
+    .skill-box i {
+      color: var(--primary-light);
+      font-size: 1.45rem;
+      margin-bottom: 10px;
+    }
+
+    .skill-box h4 {
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+
+    .skill-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .known-skills {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .known-skills h4 {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .known-skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .known-skill {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(59,130,246,0.12);
+      color: var(--primary-light);
+      border: 1px solid rgba(96,165,250,0.22);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* =========================
+       5. RESUME / RIWAYAT
+       Untuk menambah pengalaman/pendidikan:
+       Copy satu .timeline-item lalu ubah isinya.
+       ========================= */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 64px;
+      margin-bottom: 24px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 10px;
+      top: 18px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border: 5px solid var(--bg-main);
+      box-shadow: 0 0 0 1px rgba(96,165,250,0.35);
+    }
+
+    .timeline-content {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+      transition: 0.25s ease;
+    }
+
+    .timeline-content:hover {
+      background: var(--bg-card-hover);
+      transform: translateX(4px);
+    }
+
+    .timeline-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-content h4 {
+      color: var(--primary-light);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .timeline-content p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* =========================
+       6. PORTOFOLIO
+       Untuk menambah project:
+       Copy satu .portfolio-card lalu ubah judul, deskripsi,
+       tech stack, dan link tombolnya.
+       ========================= */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .portfolio-card {
+      overflow: hidden;
+      transition: 0.25s ease;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      background: var(--bg-card-hover);
+    }
+
+    .portfolio-thumb {
+      min-height: 190px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, rgba(59,130,246,0.55), rgba(34,211,238,0.28)),
+        radial-gradient(circle at top right, rgba(255,255,255,0.16), transparent 35%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-thumb i {
+      font-size: 3rem;
+      color: white;
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25));
+    }
+
+    .portfolio-body {
+      padding: 22px;
+    }
+
+    .portfolio-body h3 {
+      font-size: 1.18rem;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-body p {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      margin-bottom: 16px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(59,130,246,0.12);
+      color: var(--primary-light);
+      font-weight: 700;
+      font-size: 0.75rem;
+      border: 1px solid rgba(96,165,250,0.22);
+    }
+
+    .portfolio-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .small-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.92rem;
+      transition: 0.2s ease;
+    }
+
+    .small-link:hover {
+      color: var(--primary-light);
+    }
+
+    /* =========================
+       7. LAYANAN / LINK
+       Untuk menambah layanan:
+       Copy satu .service-card lalu ubah icon, judul,
+       deskripsi, dan href.
+       ========================= */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .service-card {
+      padding: 26px;
+      transition: 0.25s ease;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      background: var(--bg-card-hover);
+    }
+
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(34,211,238,0.12));
+      color: var(--accent);
+      font-size: 1.4rem;
+      border: 1px solid rgba(96,165,250,0.25);
+    }
+
+    .service-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.18rem;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      margin-bottom: 22px;
+      flex: 1;
+    }
+
+    .service-card .btn {
+      width: fit-content;
+    }
+
+    /* =========================
+       8. KONTAK
+       Bagian kontak dibuat tanpa form.
+       Ubah link sosial media sesuai akun kamu.
+       ========================= */
+    .contact-grid {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      padding: 30px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.45rem;
+      margin-bottom: 14px;
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .contact-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+      transition: 0.2s ease;
+      min-height: 86px;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(96,165,250,0.55);
+      background: rgba(59,130,246,0.12);
+      transform: translateY(-3px);
+    }
+
+    .contact-link i {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: rgba(34,211,238,0.1);
+      color: var(--accent);
+      flex: 0 0 38px;
+    }
+
+    .contact-link span {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      display: block;
+    }
+
+    .contact-link strong {
+      word-break: break-word;
+    }
+
+    /* =========================
+       9. FOOTER
+       ========================= */
+    .footer {
+      padding: 32px 20px;
+      border-top: 1px solid var(--border);
+      background: rgba(7, 17, 31, 0.72);
+    }
+
+    .footer-inner {
+      width: min(100%, var(--container));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+    }
+
+    .socials a {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+      color: var(--text-main);
+      transition: 0.2s ease;
+    }
+
+    .socials a:hover {
+      color: white;
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      box-shadow: 0 14px 35px rgba(59,130,246,0.35);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: 0.25s ease;
+      z-index: 900;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       10. RESPONSIVE
+       ========================= */
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-wrap {
+        margin: 0 auto;
+      }
+
+      .portfolio-grid,
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      section {
+        padding: 76px 18px;
+      }
+
+      .hamburger {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 76px;
+        left: 18px;
+        right: 18px;
+        display: grid;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: rgba(7, 17, 31, 0.96);
+        backdrop-filter: blur(18px);
+        box-shadow: var(--shadow);
+        transform: translateY(-16px);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.25s ease;
+      }
+
+      .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-link {
+        display: block;
+        padding: 13px 14px;
+        border-radius: 13px;
+      }
+
+      .nav-link:hover {
+        background: rgba(59, 130, 246, 0.12);
+      }
+
+      .hero {
+        padding-top: 110px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid,
+      .portfolio-grid,
+      .services-grid,
+      .contact-links {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-image-box {
+        min-height: 350px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .timeline-item {
+        padding-left: 54px;
+      }
+
+      .about-intro,
+      .about-card,
+      .contact-info {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- =========================
+       NAVBAR
+       ========================= -->
+  <header class="navbar" id="navbar">
+    <nav class="nav-inner">
+      <a href="#beranda" class="brand" aria-label="Kembali ke beranda">
+        <span class="brand-logo">R</span>
+        <span>Richmawan's Portfolio</span>
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Buka menu navigasi">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+        <li><a href="#tentang" class="nav-link">Tentang</a></li>
+        <li><a href="#resume" class="nav-link">Resume</a></li>
+        <li><a href="#portofolio" class="nav-link">Portofolio</a></li>
+        <li><a href="#layanan" class="nav-link">Layanan</a></li>
+        <li><a href="#kontak" class="nav-link">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- =========================
+       BERANDA / HERO
+       ========================= -->
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fa-solid fa-circle-check"></i>
+            IT Support • Administrasi • Sistem Informasi
+          </div>
+
+          <h1 class="hero-title">
+            Halo, saya <span class="gradient-text">Richmawan Hariz Pratama</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Saya memiliki latar belakang Teknik Komputer dan Jaringan, pengalaman kerja di bidang operasional dan teknologi, serta sedang menempuh S1 Sistem Informasi. Saya berfokus pada pengelolaan komputer, jaringan, troubleshooting, otomasi sederhana, dan pengembangan aplikasi sesuai kebutuhan kerja.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#portofolio" class="btn btn-primary">
+              <i class="fa-solid fa-briefcase"></i>
+              Lihat Portofolio
+            </a>
+            <a href="#kontak" class="btn btn-outline">
+              <i class="fa-solid fa-paper-plane"></i>
+              Hubungi Saya
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-number">7+</span>
+              <span class="stat-label">Tahun pengalaman kerja</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">TKJ</span>
+              <span class="stat-label">Fondasi komputer & jaringan</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">SI</span>
+              <span class="stat-label">Mahasiswa S1 Sistem Informasi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-wrap">
+          <div class="profile-glow"></div>
+          <div class="profile-card">
+            <div class="profile-image-box">
+              <div class="profile-placeholder">
+                <h3>Richmawan Hariz Pratama</h3>
+                <p>Technology Enthusiast</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         TENTANG
+         ========================= -->
+    <section id="tentang">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker"><i class="fa-solid fa-user"></i> Tentang Saya</span>
+          <h2 class="section-title">Profil Singkat</h2>
+          <p class="section-desc">
+            Ringkasan kemampuan, latar belakang, dan fokus pengembangan saya di bidang teknologi informasi.
+          </p>
+        </div>
+
+        <div class="about-layout">
+          <div class="about-intro card">
+            <h3>Siapa Saya?</h3>
+            <p>
+              Saya adalah lulusan SMK Negeri 1 Garut jurusan Teknik Komputer dan Jaringan dengan fondasi dalam komputer, troubleshooting, konfigurasi jaringan, dan pengelolaan perangkat teknologi. Saat ini saya sedang menempuh S1 Sistem Informasi di Universitas Terbuka untuk memperluas kemampuan dalam pengembangan sistem, pengelolaan data, dan solusi teknologi berbasis kebutuhan kerja.
+            </p>
+            <p>
+              Saya terbiasa menggunakan aplikasi perkantoran, mengolah data, serta membuat solusi aplikasi sederhana menggunakan VB.NET. Dengan pengalaman kerja di lingkungan operasional dan teknis, saya berfokus pada solusi yang praktis, efisien, dan mudah digunakan.
+            </p>
+          </div>
+
+          <div class="about-bottom-grid">
+            <div class="about-card card">
+              <h3>Informasi Utama</h3>
+              <div class="info-list">
+                <div class="info-item">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <div>
+                    <strong>Pendidikan Terbaru</strong>
+                    <span>S1 Sistem Informasi - Universitas Terbuka
+						<br>Mulai Mei 2026
+					</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="fa-solid fa-briefcase"></i>
+                  <div>
+                    <strong>Pengalaman Terbaru</strong>
+                    <span>PT. Asgaraya Purnama Abadi - Garut
+						<br>Juni 2021 - sekarang
+					</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="fa-solid fa-network-wired"></i>
+                  <div>
+                    <strong>Keahlian Utama</strong>
+                    <span>Komputer, jaringan, troubleshooting, Microsoft Office, pengolahan data, dan aplikasi sederhana berbasis VB.NET</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <div>
+                    <strong>Domisili</strong>
+                    <span>Garut, Jawa Barat, Indonesia</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-card card">
+              <h3>Skill & Fokus</h3>
+              <div class="skills-grid">
+                <div class="skill-box">
+                  <i class="fa-solid fa-screwdriver-wrench"></i>
+                  <h4>Troubleshooting Komputer</h4>
+                  <p>Diagnosa masalah komputer, instalasi sistem, maintenance, dan optimasi perangkat.</p>
+                </div>
+                <div class="skill-box">
+                  <i class="fa-solid fa-wifi"></i>
+                  <h4>Jaringan Komputer</h4>
+                  <p>Konfigurasi jaringan dasar, pemeliharaan koneksi, dan manajemen perangkat jaringan.</p>
+                </div>
+                <div class="skill-box">
+                  <i class="fa-solid fa-code"></i>
+                  <h4>Aplikasi Desktop</h4>
+                  <p>Membuat aplikasi desktop sederhana untuk administrasi, otomasi, dan pengolahan data.</p>
+                </div>
+                <div class="skill-box">
+                  <i class="fa-solid fa-file-excel"></i>
+                  <h4>Office & Data</h4>
+                  <p>Mengoperasikan aplikasi perkantoran dan membantu pengelolaan dokumen kerja.</p>
+                </div>
+              </div>
+
+              <div class="known-skills">
+                <h4>Skill yang Diketahui</h4>
+                <div class="known-skill-list">
+                  <span class="known-skill">VB.NET</span>
+                  <span class="known-skill">MySQL</span>
+                  <span class="known-skill">PHP</span>
+                  <span class="known-skill">Python</span>
+                  <span class="known-skill">Java</span>
+                  <span class="known-skill">Editing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         RESUME
+         ========================= -->
+    <section id="resume">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker"><i class="fa-solid fa-file-lines"></i> Resume</span>
+          <h2 class="section-title">Pendidikan & Pengalaman</h2>
+          <p class="section-desc">
+            Perjalanan pendidikan dan pengalaman kerja yang membentuk kemampuan saya di bidang teknologi dan operasional.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-content card">
+              <span class="timeline-date"><i class="fa-solid fa-calendar-days"></i> Mei 2026 - Sekarang</span>
+              <h3>S1 Sistem Informasi</h3>
+              <h4>Universitas Terbuka</h4>
+              <p>
+                Menempuh pendidikan S1 Sistem Informasi untuk memperdalam pemahaman tentang pengembangan sistem, manajemen informasi, basis data, analisis kebutuhan, dan pemanfaatan teknologi dalam organisasi.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-content card">
+              <span class="timeline-date"><i class="fa-solid fa-calendar-days"></i> Juni 2021 - Sekarang</span>
+              <h3>Staff Administrasi</h3>
+              <h4>PT. Asgaraya Purnama Abadi - Garut</h4>
+              <p>
+                Berpengalaman dalam membantu pekerjaan operasional, pengelolaan data, penggunaan aplikasi perkantoran, troubleshooting perangkat, serta membuat solusi sederhana untuk mendukung kebutuhan kerja.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-content card">
+              <span class="timeline-date"><i class="fa-solid fa-calendar-days"></i> Maret 2018 - Mei 2021</span>
+              <h3>Operator / Teknisi</h3>
+              <h4>Athena Game Center - Garut</h4>
+              <p>
+                Mengelola perangkat komputer, melakukan maintenance, troubleshooting hardware dan software, menjaga kestabilan jaringan, serta membantu kebutuhan teknis dan pelayanan pengguna.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-content card">
+              <span class="timeline-date"><i class="fa-solid fa-calendar-days"></i> Lulus 2017</span>
+              <h3>Teknik Komputer dan Jaringan</h3>
+              <h4>SMK Negeri 1 Garut</h4>
+              <p>
+                Mempelajari dasar-dasar komputer, jaringan, instalasi sistem operasi, konfigurasi perangkat jaringan, perawatan komputer, serta konsep infrastruktur teknologi informasi.
+              </p>
+            </div>
+          </div>
+
+          <!-- CONTOH TAMBAH RESUME:
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-content card">
+              <span class="timeline-date"><i class="fa-solid fa-calendar-days"></i> Tahun - Tahun</span>
+              <h3>Nama Posisi / Pendidikan</h3>
+              <h4>Nama Perusahaan / Instansi</h4>
+              <p>Deskripsi singkat pengalaman atau pendidikan.</p>
+            </div>
+          </div>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         PORTOFOLIO
+         ========================= -->
+    <section id="portofolio">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker"><i class="fa-solid fa-layer-group"></i> Portofolio</span>
+          <h2 class="section-title">Project & Karya</h2>
+          <p class="section-desc">
+            Beberapa project yang dapat dikembangkan dan ditampilkan. Silakan klik link dan detail sesuai project yang sudah dipublikasikan.
+          </p>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-card card">
+            <div class="portfolio-thumb">
+              <i class="fa-brands fa-chrome"></i>
+            </div>
+            <div class="portfolio-body">
+              <h3>Twitter/X NSFW Filter Extension</h3>
+              <p>
+                Ekstensi Chrome untuk membantu menyaring konten tidak diinginkan di Twitter/X menggunakan pendekatan regex, keyword, dan mode tampilan seperti hide, blur, atau button.
+              </p>
+              <div class="tag-list">
+                <span class="tag">Chrome Extension</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Regex</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="#" class="small-link" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                <a href="#" class="small-link" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card card">
+            <div class="portfolio-thumb">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <div class="portfolio-body">
+              <h3>Simelon Uploader</h3>
+              <p>
+                Aplikasi VB.NET untuk membantu proses login, pengambilan data, pengolahan data, dan unggah hasil ke Google Sheets sesuai kebutuhan pekerjaan.
+              </p>
+              <div class="tag-list">
+                <span class="tag">VB.NET</span>
+                <span class="tag">Google Sheets</span>
+                <span class="tag">Automation</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="#" class="small-link" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Detail</a>
+                <a href="#" class="small-link" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card card">
+            <div class="portfolio-thumb">
+              <i class="fa-solid fa-table"></i>
+            </div>
+            <div class="portfolio-body">
+              <h3>Excel Nota Otomatis</h3>
+              <p>
+                Sistem bantu berbasis Excel/VBA untuk mencetak nota otomatis per pangkalan dari data utama tanpa perlu proses manual yang berulang.
+              </p>
+              <div class="tag-list">
+                <span class="tag">Excel</span>
+                <span class="tag">VBA</span>
+                <span class="tag">Office Automation</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="#" class="small-link" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Detail</a>
+                <a href="#" class="small-link" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card card">
+            <div class="portfolio-thumb">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <div class="portfolio-body">
+              <h3>Landing Page Backup Instagram</h3>
+              <p>
+                Halaman navigasi dan tampilan backup postingan Instagram dengan desain yang lebih rapi, modern, mudah diakses, dan responsif.
+              </p>
+              <div class="tag-list">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">UI/UX</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="#" class="small-link" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                <a href="#" class="small-link" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card card">
+            <div class="portfolio-thumb">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="portfolio-body">
+              <h3>YouTube Comment Filter</h3>
+              <p>
+                Konsep ekstensi untuk menyaring komentar spam judi online dengan pendekatan normalisasi teks, deteksi Unicode tidak biasa, dan keyword/fuzzy matching.
+              </p>
+              <div class="tag-list">
+                <span class="tag">JavaScript</span>
+                <span class="tag">Text Filter</span>
+                <span class="tag">Security</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="#" class="small-link" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Detail</a>
+                <a href="#" class="small-link" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card card">
+            <div class="portfolio-thumb">
+              <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="portfolio-body">
+              <h3>Project Berikutnya</h3>
+              <p>
+                Area ini bisa digunakan untuk menambahkan project baru, seperti aplikasi desktop, website, dashboard, tools internal, atau sistem otomasi lainnya.
+              </p>
+              <div class="tag-list">
+                <span class="tag">Coming Soon</span>
+                <span class="tag">Project Baru</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="#" class="small-link"><i class="fa-solid fa-pen-to-square"></i> Edit Nanti</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CONTOH TAMBAH PORTOFOLIO:
+          <article class="portfolio-card card">
+            <div class="portfolio-thumb">
+              <i class="fa-solid fa-icon-yang-diinginkan"></i>
+            </div>
+            <div class="portfolio-body">
+              <h3>Nama Project</h3>
+              <p>Deskripsi singkat project.</p>
+              <div class="tag-list">
+                <span class="tag">Teknologi 1</span>
+                <span class="tag">Teknologi 2</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="LINK_DEMO" class="small-link" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                <a href="LINK_GITHUB" class="small-link" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+              </div>
+            </div>
+          </article>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         LAYANAN / LINK
+         ========================= -->
+    <section id="layanan">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker"><i class="fa-solid fa-link"></i> Layanan & Tautan</span>
+          <h2 class="section-title">Akses Cepat</h2>
+          <p class="section-desc">
+            Bagian ini bisa digunakan sebagai navigasi ke website project, toko produk digital, halaman layanan, atau link penting lainnya.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card card">
+            <div class="service-icon">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h3>Website Project</h3>
+            <p>
+              Kumpulan website, demo aplikasi, landing page, atau halaman project yang dapat dilihat secara online.
+            </p>
+            <a href="https://richs-ds.blogspot.com/" class="btn btn-outline" target="_blank" rel="noopener">
+              Buka Link <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </article>
+
+          <article class="service-card card">
+            <div class="service-icon">
+              <i class="fa-solid fa-store"></i>
+            </div>
+            <h3>Toko Produk Digital</h3>
+            <p>
+              Link menuju toko produk digital, template, tools, file, atau layanan digital yang tersedia.
+            </p>
+            <a href="https://lynk.id/richazetadigitalsolution" class="btn btn-outline" target="_blank" rel="noopener">
+              Kunjungi Toko <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </article>
+
+          <article class="service-card card">
+            <div class="service-icon">
+              <i class="fa-brands fa-github"></i>
+            </div>
+            <h3>GitHub Repository</h3>
+            <p>
+              Repositori project, source code, dokumentasi, dan pengembangan tools yang saya buat.
+            </p>
+            <a href="https://github.com/richmawanharizp" class="btn btn-outline" target="_blank" rel="noopener">
+              Lihat GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </article>
+
+          <article class="service-card card">
+            <div class="service-icon">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <h3>Bantuan Teknis</h3>
+            <p>
+              Bantuan dasar seputar komputer, instalasi, troubleshooting, jaringan, dan penggunaan aplikasi perkantoran.
+            </p>
+            <a href="#kontak" class="btn btn-outline">
+              Hubungi Saya <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="service-card card">
+            <div class="service-icon">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h3>Custom Tools Sederhana</h3>
+            <p>
+              Pembuatan tools sederhana berbasis kebutuhan, seperti otomasi Excel, aplikasi desktop, atau halaman web statis.
+            </p>
+            <a href="#kontak" class="btn btn-outline">
+              Diskusi Project <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="service-card card">
+            <div class="service-icon">
+              <i class="fa-solid fa-folder-open"></i>
+            </div>
+            <h3>Dokumentasi & File</h3>
+            <p>
+              Area link untuk dokumentasi, katalog, daftar layanan, atau file publik lain yang ingin dibagikan.
+            </p>
+            <a href="#" class="btn btn-outline" target="_blank" rel="noopener">
+              Buka Folder <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </article>
+
+          <!-- CONTOH TAMBAH LAYANAN:
+          <article class="service-card card">
+            <div class="service-icon">
+              <i class="fa-solid fa-icon-yang-diinginkan"></i>
+            </div>
+            <h3>Nama Layanan</h3>
+            <p>Deskripsi singkat layanan atau link.</p>
+            <a href="LINK_TUJUAN" class="btn btn-outline" target="_blank" rel="noopener">
+              Buka Link <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </article>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         KONTAK
+         ========================= -->
+    <section id="kontak">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker"><i class="fa-solid fa-envelope"></i> Kontak</span>
+          <h2 class="section-title">Mari Terhubung</h2>
+          <p class="section-desc">
+            Silakan hubungi saya untuk diskusi project, kerja sama, atau kebutuhan terkait teknologi dan sistem.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info card">
+            <h3>Informasi Kontak</h3>
+            <p>
+              Silakan hubungi saya melalui kontak dan media sosial berikut.
+            </p>
+
+            <div class="contact-links">
+              <a href="mailto:richmawanharizp@gmail.com" class="contact-link">
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                  <span>Email</span>
+                  <strong>richmawanharizp@gmail.com</strong>
+                </div>
+              </a>
+
+              <a href="https://wa.me/6281380688087" class="contact-link" target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp"></i>
+                <div>
+                  <span>WhatsApp</span>
+                  <strong>+62 813 8068 8087</strong>
+                </div>
+              </a>
+
+              <a href="https://github.com/richmawanharizp" class="contact-link" target="_blank" rel="noopener">
+                <i class="fa-brands fa-github"></i>
+                <div>
+                  <span>GitHub</span>
+                  <strong>@richmawanharizp</strong>
+                </div>
+              </a>
+
+              <a href="https://www.instagram.com/richmawanharizpratama" class="contact-link" target="_blank" rel="noopener">
+                <i class="fa-brands fa-instagram"></i>
+                <div>
+                  <span>Instagram</span>
+                  <strong>@richmawanharizpratama</strong>
+                </div>
+              </a>
+
+              <a href="https://www.linkedin.com/in/richmawanharizp/" class="contact-link" target="_blank" rel="noopener">
+                <i class="fa-brands fa-linkedin"></i>
+                <div>
+                  <span>LinkedIn</span>
+                  <strong>@richmawanharizp</strong>
+                </div>
+              </a>
+
+              <a href="https://www.youtube.com/@Richazeta" class="contact-link" target="_blank" rel="noopener">
+                <i class="fa-brands fa-youtube"></i>
+                <div>
+                  <span>YouTube</span>
+                  <strong>@Richazeta</strong>
+                </div>
+              </a>
+
+              <a href="https://www.facebook.com/richmawanharizp" class="contact-link" target="_blank" rel="noopener">
+                <i class="fa-brands fa-facebook"></i>
+                <div>
+                  <span>Facebook</span>
+                  <strong>Richmawan Hariz Pratama</strong>
+                </div>
+              </a>
+
+              <a href="https://www.tiktok.com/@richmawanharizp" class="contact-link" target="_blank" rel="noopener">
+                <i class="fa-brands fa-tiktok"></i>
+                <div>
+                  <span>TikTok</span>
+                  <strong>@richmawanharizp</strong>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Richmawan Hariz Pratama. All rights reserved.</p>
+      <div class="socials">
+        <a href="https://github.com/richmawanharizp" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.instagram.com/richmawanharizp" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:richmawanharizp@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#beranda" class="back-to-top" id="backToTop" aria-label="Kembali ke atas">
+    <i class="fa-solid fa-arrow-up"></i>
+  </a>
+
+  <script>
+    /* =========================================================
+       JAVASCRIPT WEBSITE
+       Bagian ini mengatur navbar mobile, active link,
+       tombol back-to-top, dan form kontak.
+       ========================================================= */
+
+    const navbar = document.getElementById("navbar");
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("navMenu");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const backToTop = document.getElementById("backToTop");
+    const year = document.getElementById("year");
+    const contactForm = document.getElementById("contactForm");
+
+    year.textContent = new Date().getFullYear();
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("open");
+      const icon = hamburger.querySelector("i");
+      icon.classList.toggle("fa-bars");
+      icon.classList.toggle("fa-xmark");
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("open");
+        const icon = hamburger.querySelector("i");
+        icon.classList.add("fa-bars");
+        icon.classList.remove("fa-xmark");
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+
+      navbar.classList.toggle("scrolled", scrollY > 24);
+      backToTop.classList.toggle("show", scrollY > 500);
+
+      document.querySelectorAll("section[id]").forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute("id");
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.classList.remove("active");
+            const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+            if (activeLink) activeLink.classList.add("active");
+          });
+        }
+      });
+    });
+
+    if (contactForm) {
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        const subject = encodeURIComponent(`Pesan dari ${name} melalui Website Portfolio`);
+        const body = encodeURIComponent(
+          `Nama: ${name}
+Email: ${email}
+
+Pesan:
+${message}`
+        );
+
+        window.location.href = `mailto:richmawanharizp@gmail.com?subject=${subject}&body=${body}`;
+      });
+    }
+  </script>
+</body>
+</html>
